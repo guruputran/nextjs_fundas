@@ -1,42 +1,34 @@
 /** @format */
 
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function HomePage() {
+export default function ListDetails() {
   const router = useRouter();
-  const handleNavigate = () => {
-    router.push("/list");
-  };
+  const { query } = router;
+  const { details } = query;
   return (
-    <div className="mt-16 ml-4">
-      <Link href="/login">
+    <div>
+      <Link href="/">
         <button
           type="button"
           className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
         >
-          Login Page
+          Home Page
         </button>
       </Link>
       <Link href="/list">
-        <a
+        <button
           type="button"
           className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
         >
-          List Page
-        </a>
+          List
+        </button>
       </Link>
-      <h2>Alternative way to navigate</h2>
-      <button
-        type="button"
-        className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-        onClick={handleNavigate}
-      >
-        List Page
-      </button>
+      <h2 className="text-3xl text-pink-600 font-bold">
+        List details for {details}
+      </h2>
     </div>
   );
 }
