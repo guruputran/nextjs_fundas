@@ -3,10 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import useSafePush from "../../hooks/useSafePush";
 
 export default function LoginPage() {
+  const { safePush } = useSafePush();
   const { data: session } = useSession();
+  const router = useRouter();
   console.log("session", session);
+  useEffect(() => {
+    if (session) safePush("/");
+  }, [session, router]);
   return (
     <div>
       <Link href="/">
@@ -17,6 +25,8 @@ export default function LoginPage() {
           Home Page
         </button>
       </Link>
+      <p> {session && session.user && session.user.name}</p>
+      <p> {session && session.user && session.user.email}</p>
       <h1>Login__Page</h1>
       <button
         type="button"
