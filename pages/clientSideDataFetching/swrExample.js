@@ -14,7 +14,9 @@ export default function swrExample() {
   if (isLoading) return <div>Loading, pls wait...</div>;
   return (
     <div>
-      <h2>This is swr Hook client side data fetching</h2>
+      <h2 className="text-pink-600 text-2xl underline font-semibold">
+        This is swr Hook client side data fetching
+      </h2>
       <ul>
         {data && data.products && data.products.length > 0
           ? data.products.map((item) => (
